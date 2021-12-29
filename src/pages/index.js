@@ -1,3 +1,14 @@
+// import {useEffect} from 'react';
+// import useBaseUrl from '@docusaurus/useBaseUrl';
+
+// export default function Home() {
+// 	useEffect(() => {
+// 		window.location.href = useBaseUrl('/docs/welcome');
+// 	}, []);
+//   return null;
+// }
+
+
 import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
@@ -12,14 +23,14 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        {/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
+        {/* <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            to="/docs/welcome">
+            Get started
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );
@@ -32,9 +43,9 @@ export default function Home() {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
-      <main>
+      {/* <main>
         <HomepageFeatures />
-      </main>
+      </main> */}
     </Layout>
   );
 }
