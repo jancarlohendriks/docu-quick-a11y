@@ -4,55 +4,67 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+		page: '/docs/principles/basics',
+    title: 'Principles',
+    img: require('../../static/img/icons8-compass-100.png').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        What is Web Accessibility?
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
-    description: (
+		page: '/docs/get-started/color-contrast',
+    title: 'Get Started',
+    img: require('../../static/img/icons8-library-100.png').default,
+		description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        How can you make an Accessibile app?
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
-    description: (
+		page: '/docs/tools/checklist',
+    title: 'Tools',
+    img: require('../../static/img/icons8-rocket-100.png').default,
+		description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Save time!
+      </>
+    ),
+  },
+  {
+		page: '/docs/library/menu',
+    title: 'Library',
+    img: require('../../static/img/icons8-tools-100.png').default,
+		description: (
+      <>
+        Steal like an artist!
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({page, img, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
+    <a className={clsx('col col--6')} href={page}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+				<img src={img} />
+        {/* <Svg className={styles.featureSvg} alt={title} /> */}
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
-        <p>{description}</p>
+				{ description && <p>{description}</p> }
       </div>
-    </div>
+    </a>
   );
 }
 
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-      <div className="container">
+      {/* <div className="container"> */}
+      <div className={styles.container}>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

@@ -124,7 +124,7 @@ const config = {
           //   ],
           // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Quick Accessibility Guide, Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Quick Accessibility Guide.`,
       },
       prism: {
         theme: lightCodeTheme,
