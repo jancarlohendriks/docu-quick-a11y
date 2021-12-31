@@ -4,52 +4,16 @@ sidebar_position: 2
 
 # Regulations
 
-Docusaurus can manage multiple versions of your docs.
+The Web Content Accessibility Guidelines (WCAG) provide an international set of guidelines. They are developed by the Worldwide Web Consortium (W3C), the governing body of the web.
 
-## Create a docs version
+WCAG 2.0 was released nearly 10 years ago, and contains 12 guidelines for digital accessibility, divided
+among four principles with the acronym P.O.U.R: Perceivable, Operable, Understandable and
+Robust. Each guideline has a list of “success criteria,” or requirements (61 in total), for making
+content – including text, images, sounds, code and mark-up – more accessible.
 
-Release a version 1.0 of your project:
+In addition, WCAG 2.0 has three levels of conformance: **A** (minimum accessibility), **AA** (addresses the major, most common accessibility issues) and **AAA** (the highest standard).
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+The success criteria found in WCAG 2.0 are included in WCAG 2.1.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
-
-Your docs now have 2 versions:
-
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
-
-## Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The docs version dropdown appears in your navbar:
-
-![Docs Version Dropdown](/img/tutorial/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+What’s new about WCAG 2.1 is that it includes 17 new success criteria related to mobile
+accessibility, as well as provisions that will benefit more people.

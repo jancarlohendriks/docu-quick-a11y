@@ -4,52 +4,14 @@ sidebar_position: 1
 
 # Basics
 
-Docusaurus can manage multiple versions of your docs.
+Accessibility is a criterion used to make sure any piece of technology, from an elevator to a phone or a website, is usable for as many people as possible. According to the World Wide Web Consortium (W3C), accessibility “means that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can: perceive, understand, navigate, interact with the Web and contribute to the Web.”
 
-## Create a docs version
+## POUR principle
 
-Release a version 1.0 of your project:
+1. **Perceivable**: Web content is made available to the senses - sight, hearing, and/or touch.
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+2. **Operable**: Interface forms, controls, and navigation are operable.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+3. **Understandable**: Information and the operation of user interface must be understandable.
 
-Your docs now have 2 versions:
-
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
-
-## Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The docs version dropdown appears in your navbar:
-
-![Docs Version Dropdown](/img/tutorial/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+4. **Robust**: Content must be robust enough that it can be interpreted by a wide variety of user agents, including assistive technologies.

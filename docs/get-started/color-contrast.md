@@ -4,52 +4,30 @@ sidebar_position: 1
 
 # Color Contrast
 
-Docusaurus can manage multiple versions of your docs.
+Contrast is calculated using "relative luminance", which is defined as:
 
-## Create a docs version
+The relative brightness of any point in a colorspace, normalized to 0 for darkest black and 1 for lightest white.
+(relative luminance W3.org)
 
-Release a version 1.0 of your project:
+The relative luminance can be calculated from any colour code (like HEX or RGB).
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+![Color Contrast 1](/img/color-contrast-1.png)
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+## The formula
 
-Your docs now have 2 versions:
+To calculate the contrast ratio, the relative luminance of the lighter colour (L1) is divided through the relative luminance of the darker colour (L2):
+(L1 + 0.05) / (L2 + 0.05).
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
+### Example
 
-## Add a Version Dropdown
+![Color Contrast 2](/img/color-contrast-2.png)
 
-To navigate seamlessly across versions, add a version dropdown.
+## Official Requirements from WCAG
 
-Modify the `docusaurus.config.js` file:
+**Level AA** 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:
 
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
+- Logotypes: Text that is part of a logo or brand name has no minimum contrast requirement.
 
-The docs version dropdown appears in your navbar:
+- Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;
 
-![Docs Version Dropdown](/img/tutorial/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+- Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.
