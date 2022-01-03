@@ -10,10 +10,22 @@ const ButtonPrint = () => {
 			// value.dataset.open = 'true'
 			// value.toggleAttribute("data-collapsed")
 			// console.log(value.dataset);
-			console.log(detail);
-			// detail[1].dataset.collapsed = 'false'
-			// detail[1].open = 'true'
+			detail[1].dataset.collapsed = 'false'
+			detail[1].open = 'true'
 		})
+
+		const contents = document.querySelectorAll('summary + div')
+		const newStyle = {
+			display: 'block',
+			overflow: 'visible',
+			height: 'auto',
+			willChange: 'height',
+			transition: 'height 559ms ease-in-out 0s'
+		}
+		Object.entries(contents).map(([x,y]) => {
+			y.style = newStyle
+		})
+
 		window.print()
 	}
 

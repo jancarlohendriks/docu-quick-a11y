@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Checklist from '../components/Checklist';
 
 function Hello() {
   return (
@@ -12,10 +13,11 @@ function Hello() {
           height: '50vh',
           fontSize: '20px',
         }}>
-        <p>
+					<Checklist />
+        {/* <p>
           Edit <code>pages/helloReact.js</code> and save to reload.
         </p>
-				<button onClick={() => { alert("You clicked me"); }}>Click me</button>
+				<button onClick={() => { alert("You clicked me"); }}>Click me</button> */}
       </div>
     </Layout>
   );
