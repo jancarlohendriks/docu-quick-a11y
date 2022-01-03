@@ -4,7 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-// /** @type {import('@docusaurus/types').Config} */
+/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Quick Accessibility Guide',
   tagline: 'Dinosaurs are cool',
@@ -16,6 +16,7 @@ const config = {
   organizationName: 'jancarlo', // Usually your GitHub org/user name.
   projectName: 'docu-quick-a-11-y', // Usually your repo name.
 	themes: ['@docusaurus/theme-live-codeblock'],
+	// plugins: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
       'classic',
@@ -61,23 +62,30 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-			// colorMode: {
-			// 	defaultMode: 'light',
-			// 	disableSwitch: false,
-			// 	respectPrefersColorScheme: false,
-			// 	switchConfig: {
-			// 		darkIcon: '🌙',
-			// 		darkIconStyle: {
-			// 			marginLeft: '2px',
-			// 		},
-			// 		// Unicode icons such as '\u2600' will work
-			// 		// Unicode with 5 chars require brackets: '\u{1F602}'
-			// 		lightIcon: '\u{1F602}',
-			// 		lightIconStyle: {
-			// 			marginLeft: '1px',
-			// 		},
-			// 	},
-			// },
+			liveCodeBlock: {
+				/**
+				 * The position of the live playground, above or under the editor
+				 * Possible values: "top" | "bottom"
+				 */
+				playgroundPosition: 'top',
+			},
+			colorMode: {
+				defaultMode: 'light',
+				disableSwitch: true,
+				respectPrefersColorScheme: false,
+				switchConfig: {
+					darkIcon: '🌙',
+					darkIconStyle: {
+						marginLeft: '2px',
+					},
+					// Unicode icons such as '\u2600' will work
+					// Unicode with 5 chars require brackets: '\u{1F602}'
+					lightIcon: '\u{1F602}',
+					lightIconStyle: {
+						marginLeft: '1px',
+					},
+				},
+			},
     }),
 };
 

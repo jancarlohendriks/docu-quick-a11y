@@ -16,7 +16,7 @@ const FeatureList = [
   {
 		page: '/docs/get-started/color-contrast',
     title: 'Get Started',
-    img: require('../../static/img/icons8-library-100.png').default,
+    img: require('../../static/img/icons8-rocket-100.png').default,
 		description: (
       <>
         How can you make an Accessibile app?
@@ -26,7 +26,7 @@ const FeatureList = [
   {
 		page: '/docs/tools/checklist',
     title: 'Tools',
-    img: require('../../static/img/icons8-rocket-100.png').default,
+    img: require('../../static/img/icons8-tools-100.png').default,
 		description: (
       <>
         Save time!
@@ -36,7 +36,7 @@ const FeatureList = [
   {
 		page: '/docs/library/menu',
     title: 'Library',
-    img: require('../../static/img/icons8-tools-100.png').default,
+    img: require('../../static/img/icons8-library-100.png').default,
 		description: (
       <>
         Steal like an artist!
