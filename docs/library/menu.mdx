@@ -1,24 +1,210 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import Menu from "./components/menu/index.jsx";
+
 # Menu
 
-```jsx live="true"
-function Clock(props) {
-  const [date, setDate] = useState(new Date());
-  useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
+<Menu />
 
-    return function cleanup() {
-      clearInterval(timerID);
-    };
-  });
+<br />
 
-  function tick() {
-    setDate(new Date());
-  }
+<Tabs>
+<TabItem value="menu" label="Main Menu">
 
+Initial states and functions...
+
+```jsx {11}
+import "./styles.scss";
+import React, { useState } from "react";
+import MenuItem from "./MenuItem";
+
+export default function Menu() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedItem, setselectedItem] = useState(null);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+	... // markup
+}
+```
+
+Main markup...
+
+```jsx {22}
+return (
+  <div className="menu">
+    <header className={menuOpen ? "menu-open" : ""}>
+      <nav>
+        <span>
+          <a href="/">Logo</a>
+        </span>
+        <span
+          onKeyPress={() => toggleMenu()}
+          onClick={() => toggleMenu()}
+          tabIndex="0"
+          role="button"
+        >
+          Menu
+        </span>
+      </nav>
+      <div
+        className="menu-container"
+        style={{ "--container-items": items.length }}
+        aria-expanded={menuOpen}
+      >
+        <ul>...</ul> // Next tab item
+      </div>
+    </header>
+  </div>
+);
+```
+
+</TabItem>
+
+<TabItem value="menu-container" label="Menu Container">
+
+```jsx
+<div className="menu-container" aria-expanded={menuOpen}>
+  <ul>
+    {items &&
+      items.map((item, i) =>
+        item.subItems ? (
+          <MenuItem
+            key={i}
+            id={i}
+            active={selectedItem === i}
+            title={item.title}
+            onClick={() =>
+              selectedItem === i ? setselectedItem(null) : setselectedItem(i)
+            }
+          >
+            <ul>
+              {item.subItems.map((subItem, subIndex) => (
+                <li key={subIndex} tabIndex={0}>
+                  {subItem}
+                </li>
+              ))}
+            </ul>
+          </MenuItem>
+        ) : (
+          <li key={i} tabIndex={0}>
+            <a href="/">item.title</a>
+          </li>
+        )
+      )}
+  </ul>
+</div>
+```
+
+</TabItem>
+
+<TabItem value="menu-item" label="Menu Item">
+
+```jsx
+export default function MenuItem({ id, active, title, children, onClick }) {
   return (
-    <div>
-      <h2>It is {date.toLocaleTimeString()}.</h2>
-    </div>
+    <li className="menu-item">
+      <h3>
+        <span
+          tabIndex="0"
+          id={`${id}-header`}
+          aria-controls={`${id}-panel`}
+          aria-expanded={active}
+          onKeyPress={() => {
+            onClick();
+          }}
+          onClick={() => {
+            onClick();
+          }}
+        >
+          {title}
+        </span>
+      </h3>
+      <ul
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-header`}
+        hidden={!active}
+        className="menu-item"
+      >
+        {children}
+      </ul>
+    </li>
   );
 }
 ```
+
+</TabItem>
+
+<TabItem value="styling" label="Styling">
+
+```css
+.menu {
+  background-color: lightgrey;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+```
+
+```css
+.menu-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  background-color: grey;
+
+  .menu-open & {
+    visibility: visible;
+    height: initial;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      cursor: pointer;
+      margin: 0;
+      line-height: 1;
+      * {
+        line-height: inherit;
+        margin: inherit;
+      }
+    }
+  }
+}
+```
+
+```css
+.menu-item {
+  $block: &;
+
+  &:hover,
+  &:focus-within {
+    #{$block}__subitem {
+      visibility: visible;
+    }
+  }
+
+  #{$block}__subitem {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    &.active,
+    &.active:focus {
+      color: red;
+      visibility: visible;
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

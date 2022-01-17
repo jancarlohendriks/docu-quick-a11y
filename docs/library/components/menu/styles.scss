@@ -1,0 +1,64 @@
+@import "normalize.css";
+
+.docu-menu {
+  background-color: lightgrey;
+  border-radius: var(--ifm-global-radius);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.docu-menu-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  background-color: grey;
+
+  .docu-menu-open & {
+    visibility: visible;
+    height: initial;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      cursor: pointer;
+      margin: 0;
+      line-height: 1;
+      * {
+        line-height: inherit;
+        margin: inherit;
+      }
+    }
+  }
+}
+
+.docu-menu-item {
+  $block: &;
+
+  &:hover,
+  &:focus-within {
+    #{$block}__subitem {
+      visibility: visible;
+    }
+  }
+
+  #{$block}__subitem {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    &.active,
+    &.active:focus {
+      color: red;
+      visibility: visible;
+    }
+  }
+}
