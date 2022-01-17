@@ -1,54 +1,44 @@
-# Accordion
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Accordion from "./components/accordion/index.jsx";
 
-<Tabs>
-<TabItem value="js" label="JavaScript">
+<Accordion id="item-1" title="Section title">
+  <p>Lorem ipsum dolor sit amet...</p>
+</Accordion>
 
-```jsx live="true"
-function Clock(props) {
-  const [date, setDate] = useState(new Date());
-  useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
+<br />
 
-    return function cleanup() {
-      clearInterval(timerID);
-    };
-  });
+```jsx
+import React, { useState } from "react";
 
-  function tick() {
-    setDate(new Date());
-  }
-
+export default function Accordion({ id, title, children }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div>
-      <h2>It is {date.toLocaleTimeString()}.</h2>
-    </div>
+    <>
+      <h3>
+        <button
+          id={`${id}-header`}
+          aria-controls={`${id}-panel`}
+          aria-expanded={isExpanded}
+          onClick={() => {
+            setIsExpanded(!isExpanded);
+          }}
+          onKeyPress={() => {
+            setIsExpanded(!isExpanded);
+          }}
+        >
+          {title}
+        </button>
+      </h3>
+      <section
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-header`}
+        hidden={!isExpanded}
+      >
+        {children}
+      </section>
+    </>
   );
 }
 ```
-
-</TabItem>
-
-<TabItem value="py" label="Python">
-
-```py
-def hello_world():
-  print 'Hello, world!'
-```
-
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-class HelloWorld {
-  public static void main(String args[]) {
-    System.out.println("Hello, World");
-  }
-}
-```
-
-</TabItem>
-</Tabs>

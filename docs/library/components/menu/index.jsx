@@ -28,14 +28,14 @@ export default function Menu() {
       <header className={menuOpen ? "docu-menu-open" : ""}>
         <nav>
           <span>Logo</span>
-          <button
+          <div
             onKeyPress={() => toggleMenu()}
             onClick={() => toggleMenu()}
             tabIndex="0"
             role="button"
           >
             Menu
-          </button>
+          </div>
         </nav>
         <div
           className="docu-menu-container"

@@ -72,7 +72,7 @@ const config = {
 			footer: {
 				// style: 'dark',
 				links: [],
-				copyright: `Copyright © ${new Date().getFullYear()} Quick Accessibility Guide.`,
+				copyright: `Copyright © ${new Date().getFullYear()} Quick Accessibility Guide. <a href='/docs/sources'>Sources.</a>`,
 			},
 			prism: {
 				theme: lightCodeTheme,
